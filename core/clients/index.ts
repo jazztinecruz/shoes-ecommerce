@@ -1,9 +1,11 @@
-import prismaClient from "./prisma-client";
-import queryClient from "./query-client";
+import apolloClient from "./apollo";
+import prismaClient from "./prisma";
+import queryClient from "./query";
 
 const clients = {
   query: queryClient,
-  prisma: prismaClient
+  prisma: prismaClient,
+  apollo: apolloClient,
 };
 
 export default clients;
