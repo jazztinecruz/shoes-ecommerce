@@ -1,4 +1,3 @@
-import { z } from "zod";
 import updateUser from "./mutations/update-user";
 import getUser from "./queries/get-user";
 
