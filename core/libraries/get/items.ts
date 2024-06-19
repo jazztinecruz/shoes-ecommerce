@@ -1,6 +1,6 @@
 import { GET_ALL_ITEMS, GET_SINGLE_ITEM } from "@core/queries/items";
 import { gql } from "@apollo/client";
-import clients from "@core/clients";
+import { getClient } from "@core/clients/apollo";
 
 const getItems = {
   multiple: async () => await multiple(),
@@ -10,8 +10,9 @@ const getItems = {
 export default getItems;
 
 const multiple = async () => {
-  const response = await clients.apollo.query({
-    query: gql(GET_ALL_ITEMS),
+  const client = getClient();
+  const response = await client.query({
+    query: GET_ALL_ITEMS,
   });
 
   const items = response.data.items;
@@ -22,8 +23,9 @@ const multiple = async () => {
 };
 
 const single = async (id: string) => {
-  const response = await clients.apollo.query({
-    query: gql(GET_SINGLE_ITEM),
+  const client = getClient();
+  const response = await client.query({
+    query: GET_SINGLE_ITEM,
     variables: { id },
   });
 
