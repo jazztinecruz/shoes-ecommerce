@@ -1,5 +1,6 @@
 "use client";
 
+import dotenv from "dotenv";
 import { ApolloLink, HttpLink } from "@apollo/client";
 import {
   ApolloNextAppProvider,
@@ -8,6 +9,8 @@ import {
   SSRMultipartLink,
 } from "@apollo/experimental-nextjs-app-support";
 
+dotenv.config();
+
 // server apollo client is different from client apollo client
 // this is a way to create a client for client components
 // by making an apollo wrapper that uses the ApolloNextAppProvider
@@ -15,7 +18,7 @@ import {
 // we can now query in client components with the use of useSuspenseQuery from apollo client
 const makeClient = () => {
   const httpLink = new HttpLink({
-    uri: "https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clxk1jypa021007w4qaitldj7/master",
+    uri: process.env.NEXT_PUBLIC_HYGRAPH_API_ENDPOINT,
   });
 
   return new ApolloClient({

@@ -9,7 +9,7 @@ export const { getClient } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: process.env.HYGRAPH_API_ENDPOINT,
+      uri: process.env.NEXT_PUBLIC_HYGRAPH_API_ENDPOINT,
     }),
   });
 });
