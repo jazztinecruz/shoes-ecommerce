@@ -1,8 +1,8 @@
-import { gql } from "@apollo/client";
+import { gql } from "@codegen/gql";
 
-export const GET_ALL_ITEMS = gql`
-  query GET_ALL_ITEMS {
-    items {
+export const GET_ALL_SHOES = gql(`
+  query GET_ALL_SHOES {
+    shoes {
       id
       title
       description {
@@ -13,7 +13,12 @@ export const GET_ALL_ITEMS = gql`
       colors {
         hex
       }
-      sizes
+      sizes {
+      id
+      name
+      quantity
+      isAvailable
+    }
       images {
         width
         height
@@ -21,11 +26,11 @@ export const GET_ALL_ITEMS = gql`
       }
     }
   }
-`;
+`);
 
-export const GET_SINGLE_ITEM = gql`
-  query GET_SINGLE_ITEM($id: ID!) {
-    items(where: { id: $id }) {
+export const GET_SINGLE_SHOE = gql(`
+  query GET_SINGLE_SHOE($id: ID!) {
+    shoes(where: { id: $id }) {
       id
       title
       description {
@@ -36,7 +41,12 @@ export const GET_SINGLE_ITEM = gql`
       colors {
         hex
       }
-      sizes
+      sizes {
+      id
+      name
+      quantity
+      isAvailable
+    }
       images {
         width
         height
@@ -44,4 +54,4 @@ export const GET_SINGLE_ITEM = gql`
       }
     }
   }
-`;
+`);

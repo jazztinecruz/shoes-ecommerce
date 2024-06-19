@@ -1,4 +1,4 @@
-import { GET_ALL_ITEMS, GET_SINGLE_ITEM } from "@core/queries/items";
+import { GET_ALL_ITEMS, GET_SINGLE_ITEM } from "../../../hygraph/queries/items";
 import { gql } from "@apollo/client";
 import { getClient } from "@core/clients/apollo";
 
