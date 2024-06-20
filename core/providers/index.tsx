@@ -4,7 +4,7 @@ import QueryProvider from "./query";
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ApolloWrapper>
-      <QueryProvider>{children}</QueryProvider>;
+      <QueryProvider>{children}</QueryProvider>
     </ApolloWrapper>
   );
 };
