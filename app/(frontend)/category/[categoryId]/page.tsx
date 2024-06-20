@@ -1,14 +1,14 @@
-import ShoeCard from "@core/components/elements/shoe-card";
+import ShoeCard from "@core/components/elements/shoe/card";
 import get from "@core/libraries/get";
 
 type Props = {
   params: {
-    id: string;
+    categoryId: string;
   };
 };
 
-const Page = async ({ params: { id } }: Props) => {
-  const { category } = await get.categories.single(id);
+const Page = async ({ params: { categoryId } }: Props) => {
+  const { category } = await get.categories.single(categoryId);
 
   if (!category) return null;
 

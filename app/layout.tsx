@@ -12,15 +12,23 @@ export const metadata: Metadata = {
   description: "Create by @nikkoabucejo",
 };
 
-const Root: Layout = ({ children }) => {
+type Props = {
+  modal: React.ReactNode;
+  children: React.ReactNode;
+};
+
+const Root = ({ children, modal }: Props) => {
   return (
     <html lang="en">
-      <body className={cn("Hello World", font.className)}>
+      <body className={cn(font.className)}>
         <Providers>
           <nav className="overflow-x-auto border-y border-y-black py-3">
             <NavigationCategories />
           </nav>
-          <main className="max-w-wrapper">{children}</main>
+          <main className="max-w-wrapper p-6">
+            {children}
+            {modal}
+          </main>
         </Providers>
       </body>
     </html>

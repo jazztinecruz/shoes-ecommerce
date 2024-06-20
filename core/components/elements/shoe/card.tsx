@@ -1,16 +1,25 @@
+"use client";
+
 import type get from "@core/libraries/get";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 type Props = {
   shoe: Awaited<ReturnType<typeof get.shoes.single>>["shoe"];
 };
 
 const ShoeCard = ({ shoe }: Props) => {
+  const { categoryId } = useParams();
+
+  const shoeCategoryId = shoe?.categories.find(
+    (category) => category.id === categoryId,
+  )?.id;
+
   if (!shoe) return null;
 
   return (
-    <Link href={`/shoes/${shoe.id}`}>
+    <Link href={`/category/${shoeCategoryId}/shoes/${shoe.id}`}>
       <div className="relative cursor-pointer space-y-3">
         {/* images */}
         <div className="relative aspect-square rounded-md bg-slate-300">

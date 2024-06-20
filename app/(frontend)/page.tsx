@@ -1,4 +1,4 @@
-import ShoeCard from "@core/components/elements/shoe-card";
+import ShoeCard from "@core/components/elements/shoe/card";
 import get from "@core/libraries/get";
 
 const Page: Page = async () => {
