@@ -1,12 +1,12 @@
 import { getClient } from "@core/clients/apollo";
 import { GET_SHOES, GET_SHOE } from "@hygraph/queries";
 
-const getItems = {
+const getShoes = {
   multiple: async () => await multiple(),
   single: async (id: string) => await single(id),
 };
 
-export default getItems;
+export default getShoes;
 
 const multiple = async () => {
   const client = getClient();

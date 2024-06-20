@@ -1,8 +1,8 @@
 import getCategories from "./categories";
-import getItems from "./items";
+import getShoes from "./shoes";
 
 const get = {
-  items: getItems,
+  shoes: getShoes,
   categories: getCategories,
 };
 
