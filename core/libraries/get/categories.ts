@@ -1,30 +1,30 @@
 import { getClient } from "@core/clients/apollo";
-import { GET_SHOES, GET_SHOE } from "@hygraph/queries";
+import { GET_CATEGORIES, GET_CATEGORY } from "@hygraph/queries/categories";
 
-const getItems = {
+const getCategories = {
   multiple: async () => await multiple(),
   single: async (id: string) => await single(id),
 };
 
-export default getItems;
+export default getCategories;
 
 const multiple = async () => {
   const client = getClient();
   const response = await client.query({
-    query: GET_SHOES,
+    query: GET_CATEGORIES,
   });
 
-  const shoes = response.data.shoes;
-  return { shoes };
+  const categories = response.data.categories;
+  return { categories };
 };
 
 const single = async (id: string) => {
   const client = getClient();
   const response = await client.query({
-    query: GET_SHOE,
+    query: GET_CATEGORY,
     variables: { id },
   });
 
-  const shoe = response.data.shoe;
-  return { shoe };
+  const category = response.data.category;
+  return { category };
 };

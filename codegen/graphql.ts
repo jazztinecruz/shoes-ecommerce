@@ -817,6 +817,477 @@ export type BatchPayload = {
   count: Scalars['Long']['output'];
 };
 
+/** Labels of Categories. */
+export enum Categories {
+  Boots = 'Boots',
+  Hiking = 'Hiking',
+  Kids = 'Kids',
+  Men = 'Men',
+  Running = 'Running',
+  Sneakers = 'Sneakers',
+  Sports = 'Sports',
+  Women = 'Women'
+}
+
+/** Categories of a single shoe. */
+export type Category = Entity & Node & {
+  __typename?: 'Category';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']['output'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Category>;
+  /** List of Category versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  shoes: Array<Shoe>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']['output'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']['input'];
+  inheritLocale?: Scalars['Boolean']['input'];
+  stages?: Array<Stage>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryHistoryArgs = {
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryShoesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ShoeWhereInput>;
+};
+
+
+/** Categories of a single shoe. */
+export type CategoryUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type CategoryConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CategoryWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type CategoryConnection = {
+  __typename?: 'CategoryConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<CategoryEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type CategoryCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  shoes?: InputMaybe<ShoeCreateManyInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type CategoryCreateManyInlineInput = {
+  /** Connect multiple existing Category documents */
+  connect?: InputMaybe<Array<CategoryWhereUniqueInput>>;
+  /** Create and connect multiple existing Category documents */
+  create?: InputMaybe<Array<CategoryCreateInput>>;
+};
+
+export type CategoryCreateOneInlineInput = {
+  /** Connect one existing Category document */
+  connect?: InputMaybe<CategoryWhereUniqueInput>;
+  /** Create and connect one Category document */
+  create?: InputMaybe<CategoryCreateInput>;
+};
+
+/** An edge in a connection. */
+export type CategoryEdge = {
+  __typename?: 'CategoryEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Category;
+};
+
+/** Identifies documents */
+export type CategoryManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<CategoryWhereStageInput>;
+  documentInStages_none?: InputMaybe<CategoryWhereStageInput>;
+  documentInStages_some?: InputMaybe<CategoryWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  label_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  label_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  label_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  label_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  label_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  label_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  label_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  label_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  label_starts_with?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  shoes_every?: InputMaybe<ShoeWhereInput>;
+  shoes_none?: InputMaybe<ShoeWhereInput>;
+  shoes_some?: InputMaybe<ShoeWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum CategoryOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LabelAsc = 'label_ASC',
+  LabelDesc = 'label_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type CategoryUpdateInput = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  shoes?: InputMaybe<ShoeUpdateManyInlineInput>;
+};
+
+export type CategoryUpdateManyInlineInput = {
+  /** Connect multiple existing Category documents */
+  connect?: InputMaybe<Array<CategoryConnectInput>>;
+  /** Create and connect multiple Category documents */
+  create?: InputMaybe<Array<CategoryCreateInput>>;
+  /** Delete multiple Category documents */
+  delete?: InputMaybe<Array<CategoryWhereUniqueInput>>;
+  /** Disconnect multiple Category documents */
+  disconnect?: InputMaybe<Array<CategoryWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Category documents */
+  set?: InputMaybe<Array<CategoryWhereUniqueInput>>;
+  /** Update multiple Category documents */
+  update?: InputMaybe<Array<CategoryUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Category documents */
+  upsert?: InputMaybe<Array<CategoryUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CategoryUpdateManyInput = {
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CategoryUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CategoryUpdateManyInput;
+  /** Document search */
+  where: CategoryWhereInput;
+};
+
+export type CategoryUpdateOneInlineInput = {
+  /** Connect existing Category document */
+  connect?: InputMaybe<CategoryWhereUniqueInput>;
+  /** Create and connect one Category document */
+  create?: InputMaybe<CategoryCreateInput>;
+  /** Delete currently connected Category document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected Category document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single Category document */
+  update?: InputMaybe<CategoryUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Category document */
+  upsert?: InputMaybe<CategoryUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CategoryUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CategoryUpdateInput;
+  /** Unique document search */
+  where: CategoryWhereUniqueInput;
+};
+
+export type CategoryUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CategoryCreateInput;
+  /** Update document if it exists */
+  update: CategoryUpdateInput;
+};
+
+export type CategoryUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CategoryUpsertInput;
+  /** Unique document search */
+  where: CategoryWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type CategoryWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Identifies documents */
+export type CategoryWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CategoryWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<CategoryWhereStageInput>;
+  documentInStages_none?: InputMaybe<CategoryWhereStageInput>;
+  documentInStages_some?: InputMaybe<CategoryWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  label_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  label_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  label_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  label_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  label_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  label_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  label_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  label_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  label_starts_with?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  shoes_every?: InputMaybe<ShoeWhereInput>;
+  shoes_none?: InputMaybe<ShoeWhereInput>;
+  shoes_some?: InputMaybe<ShoeWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type CategoryWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CategoryWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CategoryWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CategoryWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<CategoryWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Category record uniquely */
+export type CategoryWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: 'Color';
@@ -901,6 +1372,8 @@ export type Entity = {
 export enum EntityTypeName {
   /** Asset system model */
   Asset = 'Asset',
+  /** Categories of a single shoe. */
+  Category = 'Category',
   /** Scheduled Operation system model */
   ScheduledOperation = 'ScheduledOperation',
   /** Scheduled Release system model */
@@ -1040,12 +1513,16 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Create an asset. Use the returned info to finish the creation process by uploading the asset. */
   createAsset?: Maybe<Asset>;
+  /** Create one category */
+  createCategory?: Maybe<Category>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Create one shoe */
   createShoe?: Maybe<Shoe>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one category from _all_ existing stages. Returns deleted document. */
+  deleteCategory?: Maybe<Category>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -1053,6 +1530,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many Category documents
+   * @deprecated Please use the new paginated many mutation (deleteManyCategoriesConnection)
+   */
+  deleteManyCategories: BatchPayload;
+  /** Delete many Category documents, return deleted documents */
+  deleteManyCategoriesConnection: CategoryConnection;
   /**
    * Delete many Shoe documents
    * @deprecated Please use the new paginated many mutation (deleteManyShoesConnection)
@@ -1068,6 +1552,8 @@ export type Mutation = {
   deleteShoe?: Maybe<Shoe>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one category */
+  publishCategory?: Maybe<Category>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -1075,6 +1561,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many Category documents
+   * @deprecated Please use the new paginated many mutation (publishManyCategoriesConnection)
+   */
+  publishManyCategories: BatchPayload;
+  /** Publish many Category documents */
+  publishManyCategoriesConnection: CategoryConnection;
   /**
    * Publish many Shoe documents
    * @deprecated Please use the new paginated many mutation (publishManyShoesConnection)
@@ -1086,14 +1579,20 @@ export type Mutation = {
   publishShoe?: Maybe<Shoe>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one category */
+  schedulePublishCategory?: Maybe<Category>;
   /** Schedule to publish one shoe */
   schedulePublishShoe?: Maybe<Shoe>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one category from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishCategory?: Maybe<Category>;
   /** Unpublish one shoe from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishShoe?: Maybe<Shoe>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one category from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishCategory?: Maybe<Category>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -1101,6 +1600,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many Category documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyCategoriesConnection)
+   */
+  unpublishManyCategories: BatchPayload;
+  /** Find many Category documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyCategoriesConnection: CategoryConnection;
   /**
    * Unpublish many Shoe documents
    * @deprecated Please use the new paginated many mutation (unpublishManyShoesConnection)
@@ -1112,6 +1618,8 @@ export type Mutation = {
   unpublishShoe?: Maybe<Shoe>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one category */
+  updateCategory?: Maybe<Category>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -1119,6 +1627,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many categories
+   * @deprecated Please use the new paginated many mutation (updateManyCategoriesConnection)
+   */
+  updateManyCategories: BatchPayload;
+  /** Update many Category documents */
+  updateManyCategoriesConnection: CategoryConnection;
   /**
    * Update many shoes
    * @deprecated Please use the new paginated many mutation (updateManyShoesConnection)
@@ -1132,6 +1647,8 @@ export type Mutation = {
   updateShoe?: Maybe<Shoe>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one category */
+  upsertCategory?: Maybe<Category>;
   /** Upsert one shoe */
   upsertShoe?: Maybe<Shoe>;
 };
@@ -1139,6 +1656,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateCategoryArgs = {
+  data: CategoryCreateInput;
 };
 
 
@@ -1157,6 +1679,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteCategoryArgs = {
+  where: CategoryWhereUniqueInput;
+};
+
+
 export type MutationDeleteManyAssetsArgs = {
   where?: InputMaybe<AssetManyWhereInput>;
 };
@@ -1169,6 +1696,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCategoriesArgs = {
+  where?: InputMaybe<CategoryManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCategoriesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<CategoryManyWhereInput>;
 };
 
 
@@ -1211,6 +1753,12 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishCategoryArgs = {
+  to?: Array<Stage>;
+  where: CategoryWhereUniqueInput;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1232,6 +1780,24 @@ export type MutationPublishManyAssetsConnectionArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MutationPublishManyCategoriesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<CategoryManyWhereInput>;
+};
+
+
+export type MutationPublishManyCategoriesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<CategoryManyWhereInput>;
 };
 
 
@@ -1270,6 +1836,14 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishCategoryArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  to?: Array<Stage>;
+  where: CategoryWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishShoeArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
@@ -1288,6 +1862,14 @@ export type MutationScheduleUnpublishAssetArgs = {
 };
 
 
+export type MutationScheduleUnpublishCategoryArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  where: CategoryWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishShoeArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1301,6 +1883,12 @@ export type MutationUnpublishAssetArgs = {
   locales?: InputMaybe<Array<Locale>>;
   unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationUnpublishCategoryArgs = {
+  from?: Array<Stage>;
+  where: CategoryWhereUniqueInput;
 };
 
 
@@ -1323,6 +1911,24 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCategoriesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<CategoryManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCategoriesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<CategoryManyWhereInput>;
 };
 
 
@@ -1356,6 +1962,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateCategoryArgs = {
+  data: CategoryUpdateInput;
+  where: CategoryWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where?: InputMaybe<AssetManyWhereInput>;
@@ -1370,6 +1982,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCategoriesArgs = {
+  data: CategoryUpdateManyInput;
+  where?: InputMaybe<CategoryManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCategoriesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  data: CategoryUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<CategoryManyWhereInput>;
 };
 
 
@@ -1405,6 +2034,12 @@ export type MutationUpdateShoeArgs = {
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationUpsertCategoryArgs = {
+  upsert: CategoryUpsertInput;
+  where: CategoryWhereUniqueInput;
 };
 
 
@@ -1453,6 +2088,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve multiple categories */
+  categories: Array<Category>;
+  /** Retrieve multiple categories using the Relay connection interface */
+  categoriesConnection: CategoryConnection;
+  /** Retrieve a single category */
+  category?: Maybe<Category>;
+  /** Retrieve document version */
+  categoryVersion?: Maybe<DocumentVersion>;
   /** Fetches an object given its ID */
   entities?: Maybe<Array<Entity>>;
   /** Fetches an object given its ID */
@@ -1521,6 +2164,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryCategoriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CategoryOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<CategoryWhereInput>;
+};
+
+
+export type QueryCategoriesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CategoryOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<CategoryWhereInput>;
+};
+
+
+export type QueryCategoryArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: CategoryWhereUniqueInput;
+};
+
+
+export type QueryCategoryVersionArgs = {
+  where: VersionWhereInput;
 };
 
 
@@ -1785,7 +2466,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Shoe;
+export type ScheduledOperationAffectedDocument = Asset | Category | Shoe;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -2721,6 +3402,8 @@ export type ScheduledReleaseWhereUniqueInput = {
 /** Properties of a single shoe item */
 export type Shoe = Entity & Node & {
   __typename?: 'Shoe';
+  /** Categories of every shoe model. */
+  categories: Array<ShoeCategories>;
   /** Available colors of a single item */
   colors: Array<Color>;
   /** The time the document was created */
@@ -2755,6 +3438,18 @@ export type Shoe = Entity & Node & {
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+/** Properties of a single shoe item */
+export type ShoeCategoriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -2835,6 +3530,86 @@ export type ShoeUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
+export type ShoeCategories = Category;
+
+export type ShoeCategoriesConnectInput = {
+  Category?: InputMaybe<CategoryConnectInput>;
+};
+
+export type ShoeCategoriesCreateInput = {
+  Category?: InputMaybe<CategoryCreateInput>;
+};
+
+export type ShoeCategoriesCreateManyInlineInput = {
+  /** Connect multiple existing ShoeCategories documents */
+  connect?: InputMaybe<Array<ShoeCategoriesWhereUniqueInput>>;
+  /** Create and connect multiple existing ShoeCategories documents */
+  create?: InputMaybe<Array<ShoeCategoriesCreateInput>>;
+};
+
+export type ShoeCategoriesCreateOneInlineInput = {
+  /** Connect one existing ShoeCategories document */
+  connect?: InputMaybe<ShoeCategoriesWhereUniqueInput>;
+  /** Create and connect one ShoeCategories document */
+  create?: InputMaybe<ShoeCategoriesCreateInput>;
+};
+
+export type ShoeCategoriesUpdateInput = {
+  Category?: InputMaybe<CategoryUpdateInput>;
+};
+
+export type ShoeCategoriesUpdateManyInlineInput = {
+  /** Connect multiple existing ShoeCategories documents */
+  connect?: InputMaybe<Array<ShoeCategoriesConnectInput>>;
+  /** Create and connect multiple ShoeCategories documents */
+  create?: InputMaybe<Array<ShoeCategoriesCreateInput>>;
+  /** Delete multiple ShoeCategories documents */
+  delete?: InputMaybe<Array<ShoeCategoriesWhereUniqueInput>>;
+  /** Disconnect multiple ShoeCategories documents */
+  disconnect?: InputMaybe<Array<ShoeCategoriesWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing ShoeCategories documents */
+  set?: InputMaybe<Array<ShoeCategoriesWhereUniqueInput>>;
+  /** Update multiple ShoeCategories documents */
+  update?: InputMaybe<Array<ShoeCategoriesUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple ShoeCategories documents */
+  upsert?: InputMaybe<Array<ShoeCategoriesUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ShoeCategoriesUpdateManyWithNestedWhereInput = {
+  Category?: InputMaybe<CategoryUpdateManyWithNestedWhereInput>;
+};
+
+export type ShoeCategoriesUpdateOneInlineInput = {
+  /** Connect existing ShoeCategories document */
+  connect?: InputMaybe<ShoeCategoriesWhereUniqueInput>;
+  /** Create and connect one ShoeCategories document */
+  create?: InputMaybe<ShoeCategoriesCreateInput>;
+  /** Delete currently connected ShoeCategories document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected ShoeCategories document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single ShoeCategories document */
+  update?: InputMaybe<ShoeCategoriesUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ShoeCategories document */
+  upsert?: InputMaybe<ShoeCategoriesUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ShoeCategoriesUpdateWithNestedWhereUniqueInput = {
+  Category?: InputMaybe<CategoryUpdateWithNestedWhereUniqueInput>;
+};
+
+export type ShoeCategoriesUpsertWithNestedWhereUniqueInput = {
+  Category?: InputMaybe<CategoryUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ShoeCategoriesWhereInput = {
+  Category?: InputMaybe<CategoryWhereInput>;
+};
+
+export type ShoeCategoriesWhereUniqueInput = {
+  Category?: InputMaybe<CategoryWhereUniqueInput>;
+};
+
 export type ShoeConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>;
@@ -2853,6 +3628,7 @@ export type ShoeConnection = {
 };
 
 export type ShoeCreateInput = {
+  categories?: InputMaybe<ShoeCategoriesCreateManyInlineInput>;
   colors?: InputMaybe<Array<ColorInput>>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description?: InputMaybe<Scalars['RichTextAST']['input']>;
@@ -2897,6 +3673,10 @@ export type ShoeManyWhereInput = {
   OR?: InputMaybe<Array<ShoeWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  /** All values in which the union is empty */
+  categories_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  categories_some?: InputMaybe<ShoeCategoriesWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3045,6 +3825,7 @@ export enum ShoeOrderByInput {
 }
 
 export type ShoeUpdateInput = {
+  categories?: InputMaybe<ShoeCategoriesUpdateManyInlineInput>;
   colors?: InputMaybe<Array<ColorInput>>;
   description?: InputMaybe<Scalars['RichTextAST']['input']>;
   images?: InputMaybe<AssetUpdateManyInlineInput>;
@@ -3138,6 +3919,10 @@ export type ShoeWhereInput = {
   OR?: InputMaybe<Array<ShoeWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  /** All values in which the union is empty */
+  categories_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  categories_some?: InputMaybe<ShoeCategoriesWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -4172,19 +4957,33 @@ export type Update_Single_ShoeMutationVariables = Exact<{
 
 export type Update_Single_ShoeMutation = { __typename?: 'Mutation', updateShoe?: { __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }> } | null };
 
-export type Get_All_ShoesQueryVariables = Exact<{ [key: string]: never; }>;
+export type Get_CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Get_All_ShoesQuery = { __typename?: 'Query', shoes: Array<{ __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }> }> };
+export type Get_CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, label?: string | null, shoes: Array<{ __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }> }> }> };
 
-export type Get_Single_ShoeQueryVariables = Exact<{
+export type Get_CategoryQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type Get_Single_ShoeQuery = { __typename?: 'Query', shoes: Array<{ __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }> }> };
+export type Get_CategoryQuery = { __typename?: 'Query', category?: { __typename?: 'Category', id: string, label?: string | null, shoes: Array<{ __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }> }> } | null };
+
+export type Get_ShoesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Get_ShoesQuery = { __typename?: 'Query', shoes: Array<{ __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }>, categories: Array<{ __typename?: 'Category', id: string, label?: string | null }> }> };
+
+export type Get_ShoeQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type Get_ShoeQuery = { __typename?: 'Query', shoe?: { __typename?: 'Shoe', id: string, title?: string | null, price?: number | null, quantity?: number | null, description?: { __typename?: 'RichText', markdown: string } | null, colors: Array<{ __typename?: 'Color', hex: any }>, sizes: Array<{ __typename?: 'Size', id: string, name?: number | null, quantity?: number | null, isAvailable?: boolean | null }>, images: Array<{ __typename?: 'Asset', width?: number | null, height?: number | null, url: string }>, categories: Array<{ __typename?: 'Category', id: string, label?: string | null }> } | null };
 
 
 export const Update_Single_ShoeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UPDATE_SINGLE_SHOE"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ShoeUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateShoe"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<Update_Single_ShoeMutation, Update_Single_ShoeMutationVariables>;
-export const Get_All_ShoesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_ALL_SHOES"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shoes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<Get_All_ShoesQuery, Get_All_ShoesQueryVariables>;
-export const Get_Single_ShoeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_SINGLE_SHOE"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shoes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<Get_Single_ShoeQuery, Get_Single_ShoeQueryVariables>;
+export const Get_CategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_CATEGORIES"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"shoes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Get_CategoriesQuery, Get_CategoriesQueryVariables>;
+export const Get_CategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_CATEGORY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"category"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"shoes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Get_CategoryQuery, Get_CategoryQueryVariables>;
+export const Get_ShoesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_SHOES"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shoes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Category"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Get_ShoesQuery, Get_ShoesQueryVariables>;
+export const Get_ShoeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_SHOE"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shoe"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"markdown"}}]}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"colors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"isAvailable"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Category"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Get_ShoeQuery, Get_ShoeQueryVariables>;

@@ -1,7 +1,42 @@
 import { gql } from "@codegen/gql";
 
-export const GET_SHOES = gql(`
-  query GET_SHOES {
+export const GET_CATEGORIES = gql(`
+  query GET_CATEGORIES {
+    categories {
+    id
+    label
+    shoes {
+      id
+      title
+      description {
+        markdown
+      }
+      price
+      quantity
+      colors {
+        hex
+      }
+      sizes {
+        id
+        name
+        quantity
+        isAvailable
+      }
+      images {
+        width
+        height
+        url
+      }
+    }
+    }
+  }
+`);
+
+export const GET_CATEGORY = gql(`
+  query GET_CATEGORY ($id: ID!) {
+    category (where: {id: $id}) {
+    id
+    label
     shoes {
       id
       title
@@ -23,45 +58,6 @@ export const GET_SHOES = gql(`
         width
         height
         url
-      }
-      categories {
-      ... on Category {
-        id
-        label
-      }
-    }
-    }
-  }
-`);
-
-export const GET_SHOE = gql(`
-  query GET_SHOE($id: ID!) {
-    shoe(where: { id: $id }) {
-      id
-      title
-      description {
-        markdown
-      }
-      price
-      quantity
-      colors {
-        hex
-      }
-      sizes {
-      id
-      name
-      quantity
-      isAvailable
-    }
-      images {
-        width
-        height
-        url
-      }
-      categories {
-      ... on Category {
-        id
-        label
       }
     }
     }
