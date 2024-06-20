@@ -24,7 +24,7 @@ const ShoeDetails = ({ shoe }: Props) => {
       </div>
 
       <div className="space-y-2">
-        <p className="font-semibold">Sizes</p>
+        <p className="text-sm">Sizes</p>
         <div className="flex flex-grow items-center gap-2">
           {shoe.sizes.map((size) => (
             <button className="rounded border p-2.5 shadow hover:bg-slate-100">
@@ -35,7 +35,7 @@ const ShoeDetails = ({ shoe }: Props) => {
       </div>
 
       <div className="flex items-center gap-3">
-        <p className="font-semibold">Colors</p>
+        <p className="text-sm">Colors</p>
         <div className="flex flex-grow items-center gap-2">
           {shoe.colors.map((color) => {
             return (
@@ -47,7 +47,7 @@ const ShoeDetails = ({ shoe }: Props) => {
         </div>
       </div>
 
-      <p className="leading-7">{shoe.description?.markdown}</p>
+      <p className="text-sm leading-7">{shoe.description?.markdown}</p>
     </div>
   );
 };
