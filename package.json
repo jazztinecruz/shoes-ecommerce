@@ -20,6 +20,7 @@
     "@hookform/resolvers": "^3.6.0",
     "@prisma/client": "^5.15.0",
     "@tanstack/react-query": "^5.40.1",
+    "@tiptap/extension-bullet-list": "^2.4.0",
     "@tiptap/extension-list-item": "^2.4.0",
     "@tiptap/extension-text-style": "^2.4.0",
     "@tiptap/pm": "^2.4.0",

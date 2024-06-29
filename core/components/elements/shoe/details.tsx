@@ -1,4 +1,5 @@
 import type get from "@core/libraries/get";
+import RichTextEditor from "../fields/rich-text-editor";
 
 type Props = {
   shoe: Awaited<ReturnType<typeof get.shoes.single>>["shoe"];
@@ -47,7 +48,10 @@ const ShoeDetails = ({ shoe }: Props) => {
         </div>
       </div>
 
-      <p className="text-sm leading-7">{shoe.description?.markdown}</p>
+      <RichTextEditor
+        content={shoe.description?.html || ""}
+        isEditable={false}
+      />
     </div>
   );
 };

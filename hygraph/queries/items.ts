@@ -40,7 +40,7 @@ export const GET_SHOE = gql(`
       id
       title
       description {
-        markdown
+        html
       }
       price
       quantity
