@@ -28,7 +28,7 @@ const ShoeDetails = ({ shoe }: Props) => {
         <p className="text-sm">Sizes</p>
         <div className="flex flex-grow items-center gap-2">
           {shoe.sizes.map((size) => (
-            <button className="rounded border p-2.5 shadow hover:bg-slate-100">
+            <button className="rounded border p-2 text-sm hover:bg-slate-100">
               {size.name}
             </button>
           ))}
@@ -38,13 +38,14 @@ const ShoeDetails = ({ shoe }: Props) => {
       <div className="flex items-center gap-3">
         <p className="text-sm">Colors</p>
         <div className="flex flex-grow items-center gap-2">
-          {shoe.colors.map((color) => {
-            return (
-              <button className="rounded border p-2">
-                <div className={`h-8 w-8 rounded-full bg-black`} />
-              </button>
-            );
-          })}
+          {shoe.colors.map((color) => (
+            <button className="rounded border p-2 hover:bg-slate-100">
+              <div
+                className={`h-4 w-4 rounded-full`}
+                style={{ backgroundColor: color.hex }}
+              />
+            </button>
+          ))}
         </div>
       </div>
 
