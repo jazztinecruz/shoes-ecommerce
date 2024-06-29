@@ -34,6 +34,7 @@ const ShoeImages = ({ shoe }: Props) => {
               src={image.url}
               alt={shoe.title!}
               fill
+              sizes="w-auto h-auto"
               className="h-full w-full rounded-md"
             />
           </button>

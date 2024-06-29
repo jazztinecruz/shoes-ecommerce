@@ -12,7 +12,10 @@ type Props = {
 
 const RichTextEditor = ({ content, isEditable = true }: Props) => {
   const extensions = [
-    StarterKit,
+    StarterKit.configure({
+      bulletList: false,
+      listItem: false,
+    }),
     BulletList.configure({
       HTMLAttributes: {
         class: "flex flex-col gap-2",
