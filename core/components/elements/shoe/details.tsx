@@ -6,7 +6,6 @@ import RichTextEditor from "../fields/rich-text-editor";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import { z } from "zod";
 
 type Props = {
   shoe: Awaited<ReturnType<typeof get.shoes.single>>["shoe"];
